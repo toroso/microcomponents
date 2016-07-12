@@ -1,0 +1,16 @@
+﻿# Ownership
+
+The most important rule of your logical component is that it should own its information its and business logic. This is one of the corner stones of adhering to the Single Responsibility Principle. But what does it mean?
+
+Let's start with ownership of its information. In concrete terms, this means that each component should have its own database[^database], a database that may only be accessed by this compoenent. No other component or system is allowed to directly access anything inside this database. If some other component needs information from it, it must request the information through an API provided by the owning component.
+
+This rule is quite obvious, if you think about it. If you do allow other components to access the database, the database will become part of the API. Say that component A in the figure below would like to make a change to its database schema, then component B would have to be updated to reflect those changes. The components would, in practice, be coupled in a way that they can be treated as one and the same component.
+
+![](images/OwnershipAndCoupledComponents.png)
+
+Now that the component owns its information, it can also take ownership of the business logic. This means that the component can decide who can access the information, it can validate the information, and it can decide what kind of changes are allowed. Basically, the component owns this part of your business.
+
+[^database]: I use the word database here in its logical sense. Physically, you can choose to place two logical databases in the same database instance, place them in different database schemas within the same database, or even just have separate tables. The important thing is that the two components do not share information.
+
+
+

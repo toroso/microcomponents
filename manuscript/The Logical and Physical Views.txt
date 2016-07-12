@@ -1,0 +1,24 @@
+﻿# The Logical and Physical Views
+
+In this book I will consistently make a distinction between two architectural views, two ways of viewing a system: the logical and the physical views.
+
+The logical view is the programmer's view of the system. It is about code: classes, design patterns, logic, algorithms etc. The physical view is something that operations is more comfortable with: computers (virtual and physical), operating system process, network calls, load balancers, etc.
+
+In the logical view, programmers typically try to structure their code into some kind of components (or modules, if you prefer that term). A component typically consists of some code that has high coherence and that is loosely coupled to other components. A component, if well defined, is responsible for some part of the system, solving a specific part of the business problem. It adheres to the Single Responsibility Principle[^srp].
+
+Components are not about code reuse. Code that can be shared between parts of your system I would call some kind of library. Components can use other components, but they don't do it for the sake of reusing code, but because they want some action performed that is not their responsibility to perform. I will talk a lot more about this later on.
+
+The physical view is also divided into parts. You could say that services are the corresponding physical components, although that would, again, probably be a somewhat simplified definition of the word service. The physical components exist so that code can run in different operating system processes and possibly on different computers.
+
+The physical component has a subset of the logical code running inside of it, and it is very desirable that the physical component's border is aligned with some logical component. If you have code from the same logical component running inside of two different physical components you probably have some kind of design flaw.
+
+![](images/LogicalAndPhysicalComponentsRelation.png)
+
+While a logical component should never reside within two different physical components, the opposite is not true. You could choose to place two or more logical components inside the same physical component. This is probably what you have right now, a system that is divided into some more or less well defined logical components, but where all the code is hosted inside the same physical operating system process.
+
+This means that the true division of your system into components is a logical division. The physical division merely follows the logical division. You can have physical components that consist of several logical components, but a physical component can never be smaller than a logical one. This means that the logical division is actually what defines your architecture. The hyped term "microservices architecture" should probably be called "logical microcomponents architecture, each hosted in a separate process" (or some cooler version of it).
+
+I hope you now share my view that it is the logical architecture that is important. Since that is what is important, that is what this book will be all about.
+..tryck mer på hur viktigt det är med logiska komponenter ..cloud?
+
+[^srp]: The Single Responsibility Principle is defined by Robert C. Martin in his book Agile Principles, Patterns, and Practices. It states that every component or class should have one and only one reason to change.

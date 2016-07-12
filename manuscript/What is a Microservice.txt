@@ -1,0 +1,13 @@
+﻿# What is a Microservice?
+
+Words are important. That's something that I will come back to time and again in this book. When I use a word I (hopefully) do it with an understanding of what it means. And only if you have the same understanding as I do, do we have the possibility to understand each other. We might not agree on the certain topic, but at least we'll know what we don't agree about. However, if we, without realizing it, have a different definition of that word, we will come to a misunderstanding. Whether we agree or disagree will be of minor importance, but that's unfortunately what we will focus on.
+
+So any discussion should start with setting some kind of vocabulary, a shared language, or the discussion might be meaningless. It might sound really boring, but unfortunately it's vital. And thus, let us start with defining the word that this book is all about:
+
+What is a microservice?
+
+Writing a book about it I ought to know what it is, right? The problem is that it's not that easy. Looking at the Wikipedia page, there's a fluffy and quite abstract description of it, and that's because there is, in my opinion, no ubiquitous definition. And that's quite ironic since it's one of the most hyped words right now and everybody is talking about having a microservices architecture. And a bit scary.
+
+So let's tear the word apart, into micro and service. I'm quite comfortable with the word micro, that is, what differs a microservice from an ordinary service. Or at least I know what people do different, or ought to do different, compared to when SOA was the trendy architecture. I won't be able to give you a one sentence description of it, but will actually use the rest of this book telling you what it's all about.
+
+If the word micro is so complicated that I need a whole book to define it, it's only a fraction of the word service. It's a word that has been around for decades, and yet I don't think anyone can come up with a clear and useful definition of it. Saying that it's code that runs within an operating system process would get me quite close. But then again, that description would fit a proxy server as well. And a load balancer. And since I can't find I good definition, I won't try. Instead, I will, here and now, stop talking about microservices and services and instead start talking about concrete things that I can explain in a way so that you and I can have a shared understanding.

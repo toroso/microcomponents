@@ -1,0 +1,28 @@
+﻿# Monolith first
+
+The word monolith has a bad ring to it. It sounds like a bad designed system. It's a word you would probably place together with tight coupling and a big ball of mud. But here I will nuance the word slightly and partly turn it into something positive and possibly desirable.
+
+Let's go back to the two architectural views, the logical and physical view. A monolith in the logical architecture means you have one big logical component, or several components that are tightly coupled in a way that they in practice can be considered as a monolithic component. This kind of architecture might work and might even be a good thing if you have a very small system. As the system grows, however, I can't think of any justifiable benefits with having a logical monolith. I would call this kind of system a big ball of mud with all the bad associations that it includes.
+
+A monolith in the physical architecture means that all your code is running within the same operating system process. You can have a perfectly organized logical code base where you decide to host all components in a single process. Having a physical monolith comes with some pros and some cons. Splitting your system into several processes come with some other pros and cons. There is no ubiquitous best choice here.
+
+One of the drawbacks of physically splitting your system is that refactoring between the physical parts becomes quite cumbersome. If you notice that you need to change the API of one component you might be reluctant to do it since it involves changing the API side and client side separately, keeping track of contracts with versioning hustle. It might take so much effort that you decide to live with a suboptimal design.
+
+If you work on a new system, and especially if you work within a domain where you are no expert, your first attempt at finding good components will unlikely be perfect. As you add new features you will learn new things and you will find new ways to carve out and split your components. This is a very crucial time in your system's life. In the beginning the code will frequently tell you that it wants to change, and must allow it form in the best possible way. And you must have an architecture that makes these kind of changes easy to make. The best architecture includes a physical monolith.
+
+Once some logical component stabilize you might want to consider extracting it into a physical component. Start with one, learn from it, and do the next one only once you feel satisfied with the first one.
+
+Or you could decide to live with a physical monolith. Splitting the system physically comes with a great cost, and I would argue that most of the benefits mentioned when praising microservices are actually achieved within the logical architecture. Here are some examples:
+
+* Scalability: If what we have is a big ball of mud system, chances are that we can still kick off a second instance of it. That is, even a spaghetti system is somewhat scalable. But with physical division you can decide to have two instances of one component and ten of another. So the question is, do you really need that kind of scalability?
+* Fault isolation: If one part of the system breaks down, will it take some other part of the system with it in the fall? Many potential errors (but not all) are logical and can be fixed with a good division into logical components.
+* Organizational scalability: How can you multiple teams work on the same system? It is often mentioned as a benefit that you can organize your teams around microservices and let each microservice have an owning team. First of all, starting off development of a new system with 20 developers is doomed to fail. But as the system grows, and if you think this kind of organization is a good idea[^team], you could to some extent organize also around logical components.
+* Freedom to choose technology: Use java in one component and C# in another. The language is probably the only technology chose that requires physical components. All other choices are made in the logical architecture: frameworks, type of database, coding style, etc.
+
+The only spot on advantage with physical components in a small system I can think of is the possibility to deploy parts of your system. If you want (and need) continuous deployment
+
+As the system grows and you reach three teams or more, a single code base will probably become a bottleneck. Now it's time to start extracting physical components.
+
+
+
+[^team]: Personally, I don't think microservices/logical components is a good partitioning for teams. I will later on talk about sub-domains, something that I think is a better, but still not perfect, partition.

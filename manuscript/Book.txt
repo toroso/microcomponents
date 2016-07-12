@@ -1,1 +1,7 @@
-chapter1.txt
+﻿Part I - Setting the Scene.txt
+What is a Microservice.txt
+The Logical and Physical Views.txt
+Monolith First.txt
+
+Part II - Architectural Techniques.txt
+Ownership.txt
